@@ -1,3 +1,7 @@
+# import sys
+
+# sys.stdin = open(r'C:\Users\PC1\Desktop\TIL\알고리즘\input.txt','r')
+
 T = int(input())
 
 for t in range(T):
@@ -12,6 +16,10 @@ for t in range(T):
     for i in range(n):
         for j in range(n):
             point = matrix[i][j]
+            plus = []
+            cross = []
+            sum_plus = 0
+            sum_cross = 0
             
             for k in range(1, m):
                 a = i - k
@@ -19,10 +27,7 @@ for t in range(T):
                 c = i + k
                 d = j + k
 
-                plus = []
-                cross = []
-                sum_plus = 0
-                sum_cross = 0
+                
 
                 # 십자모양
                 if a >= 0:
@@ -39,13 +44,13 @@ for t in range(T):
                     cross.append(matrix[i-k][j-k]) # 11시
                 if a >= 0 and d < n:
                     cross.append(matrix[i-k][j+k]) # 01시
-                if b < n and d < n:
+                if c < n and d < n:
                     cross.append(matrix[i+k][j+k]) # 05시
-                if b < n and b >= 0:
+                if c < n and b >= 0:
                     cross.append(matrix[i+k][j-k]) # 07시
-            
-            sum_plus = sum(plus) + point
-            sum_cross = sum(cross) + point
+                # print(cross)
+                sum_plus = sum(plus) + point
+                sum_cross = sum(cross) + point
             ans_plus.append(sum_plus)
             ans_cross.append(sum_cross)
     
