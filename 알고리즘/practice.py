@@ -1,50 +1,24 @@
+# import sys
+
+# sys.stdin = open(r'C:\Users\PC1\Desktop\TIL\알고리즘\input.txt','r')
+
 T = int(input())
 
-for t in range(T):
-    n = int(input())
+for _ in range(T):
+    t = int(input())            # 테케 번호
 
-    goal_mat = []
-    for i in range(0,n*n,n):
-        mat = []
-        for j in range(n):
-            mat.append(i + j + 1)
-        goal_mat.append(mat)
+    score = list(map(int, input().split()))
 
-    num = n
+    a = 0
+    score_list = []
+    for i in range(1000):
+        d = score[i]
+        a = score.count(d)
+        score_list.append(a)
 
-    row = 0
-    col = n-1
+    b = max(score_list)
 
-    for count in range(n-1,-1,-2):
-        if count == 0:
-            break
-        
-        for _ in range(count):
-            goal_mat[row][col] = num
-            num += 1
-            row += 1
-        for _ in range(count):
-            goal_mat[row][col] = num
-            num += 1
-            col -= 1
-        
-        if count - 1 == 0:
-            goal_mat[row][col] = num
-            break
-        
-        for _ in range(count-1):
-            goal_mat[row][col] = num
-            num += 1
-            row -= 1
-        for _ in range(count-1):
-            goal_mat[row][col] = num
-            num += 1
-            col += 1
-        
-        goal_mat[row][col] = num
+    c = score_list.index(b)
+    ans = score[c]
 
-    print("#{}" .format(t+1))
-    for i in goal_mat:
-        for j in i:
-            print(j, end=' ')
-        print()
+    print("#{} {}" .format(t, ans))
