@@ -8,3 +8,5 @@
 
 ### SWEA [1926](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1926.py) 간단한 369게임 성공
 
+### SWEA [1979]() 어디에 단어가 들어갈 수 있을까 진행중
+
