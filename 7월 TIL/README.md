@@ -8,4 +8,4 @@
 
 [2023-07-18](https://github.com/SSAFY10kim/TIL/blob/master/7%EC%9B%94%20TIL/0718.md) **시퀀스타입/비시퀀스타입** , **컬렉션**,형변환,산술연산자
 
-[2023-07-19]() **함수**, 매개변수와 인자, 함수와 Scope, **재귀 함수**, 유용한 함수, **LEGB**
+[2023-07-19](https://github.com/SSAFY10kim/TIL/blob/master/7%EC%9B%94%20TIL/0719.md) **함수**, 매개변수와 인자, 함수와 Scope, **재귀 함수**, 유용한 함수, **LEGB**
