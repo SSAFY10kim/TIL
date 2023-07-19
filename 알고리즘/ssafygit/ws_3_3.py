@@ -1,24 +1,25 @@
-import requests
-from pprint import pprint as print
+from book import decrease_book
 
-dummy_data = []
-for i in range(1,11):
-    # 무작위 유저 정보 요청 경로
-    API_URL = (f'https://jsonplaceholder.typicode.com/users/{i}')
-    # API 요청
-    response = requests.get(API_URL)
-    # JSON -> dict 데이터 변환
-    parsed_data = response.json()
-    # # 응답 데이터 출력
-    # print(response)
+name_age = {}
+user_list = []
 
-    # # 변환 데이터 출력
-    # print(parsed_data)
-    # # 변환 데이터의 타입
-    # print(type(parsed_data))
-    
-    dummy_data.append(parsed_data["name"])
+def create_user(name, age):
+    global name_age
+    for i in range(len(name)):
+        name_age = {"name" : name[i], "age" : age[i]}
+        user_list.append(name_age)
+        print(f"{name[i]}님 환영합니다!")                                 # 이름 출력
+    rental_book()
 
-# 특정 데이터 출력
+def rental_book(info):
+    create_user(name, age)
+    decrease_book(info["age"])
 
-print(dummy_data)
+name = ['김시습', '허균', '남영로', '임제', '박지원']
+age = [20, 16, 52, 36, 60]
+address = ['서울', '강릉', '조선', '나주', '한성부']
+
+rental_book(name_age)
+
+
+

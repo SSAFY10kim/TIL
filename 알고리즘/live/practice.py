@@ -1,7 +1,3 @@
-my_set_1 = set()
-my_set_2 = {1,2,3}
-my_set_3 = {1,1,1}
+a = {'a' : 1234, 'b' : 123}
 
-print(my_set_1) 
-print(my_set_2) 
-print(my_set_3) 
+print(a.get('a'))
