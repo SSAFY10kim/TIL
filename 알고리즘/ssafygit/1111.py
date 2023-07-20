@@ -285,42 +285,46 @@ user_data = [
 blood_types = ['A-', 'A+', 'B-', 'B+', 'O-', 'O+', 'AB-', 'AB+']
 black_list = ['Jenkins-Garcia', 'Stephens Group', 'White, Andrade and Howard', 'Warren-Stewart']
 
-def create_user(user_data):
-    user_list = []
-    count = 0
-    for data in user_data:
-        result = is_validation(data)
-        if result == 'blocked':
-            count += 1
-            continue
-
-        elif result[0] == False:
-            count += 1
-            for wrong_data in result[1]:
-                data[wrong_data] = None
-        user_list.append(data)
-    print(f'잘못된 데이터로 구성된 유저의 수는 {count} 입니다.')  
-    return user_list
-
-def is_validation(data):
-    if data['company'] in black_list:
-        return 'blocked'
+def is_validation(user):
+    invalid_fields = []
     
-    check = True
-    check_list = []
-    if data['blood_group'] not in blood_types:
-        check = False
-        check_list.append('blood_group')
-    if '@' not in data['mail']:
-        check = False
-        check_list.append('mail')
-    if 2 > len(data['name']) or 31 < len(data['name']):
-        check = False
-        check_list.append('name')
-    if len(data['website']) <= 0:
-        check = False
-        check_list.append('website')
+    if user["blood_group"] not in blood_types:
+        invalid_fields.append("blood_group")
+    
+    if user["company"] in black_list:
+        return "blocked"
+    
+    if '@' not in user["mail"]:
+        invalid_fields.append("mail")
+    
+    if len(user["name"]) < 2 or len(user["name"]) > 30:
+        invalid_fields.append("name")
+    
+    if len(user["website"]) == 0:
+        invalid_fields.append("website")
+    
+    if len(invalid_fields) > 0:
+        return False, invalid_fields
+    else:
+        return True
 
-    return check, check_list
+def create_user(user_data):
+    valid_users = []
+    invalid_user_count = 0
 
-print(create_user(user_data))
+    for user in user_data:
+        result = is_validation(user)
+        if result == "blocked":
+            continue
+        elif result == True:
+            valid_users.append(user)
+        else:
+            invalid_user_count += 1
+            for field in result[1]:
+                user[field] = None
+
+    print(f"잘못된 데이터로 구성된 유저의 수는 {invalid_user_count} 입니다.")
+    print(valid_users)
+
+create_user(user_data)
+# 내 풀이
