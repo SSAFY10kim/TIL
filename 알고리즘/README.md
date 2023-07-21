@@ -18,4 +18,6 @@
 
 ### SWEA [1209](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1209.py) [S/W 문제해결 기본] 2일차 - Sum 성공
 
+### SWEA [1206](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1206.py) [S/W 문제해결 기본] 1일차 - View
+
 
