@@ -11,3 +11,6 @@
 [2023-07-19](https://github.com/SSAFY10kim/TIL/blob/master/7%EC%9B%94%20TIL/0719.md) **함수**, 매개변수와 인자, 함수와 Scope, **재귀 함수**, 유용한 함수, **LEGB**
 
 [2023-07-20](https://github.com/SSAFY10kim/TIL/blob/master/7%EC%9B%94%20TIL/0720.md) **for문, while문,반복제어**,**List comprehension**,pass,**enumerate**
+
+[2023-07-21](https://github.com/SSAFY10kim/TIL/blob/master/7%EC%9B%94%20TIL/0721.md) 1학기 관통PJT 1주차
+
