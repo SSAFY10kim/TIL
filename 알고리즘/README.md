@@ -23,3 +23,9 @@
 ### SWEA [1208](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1208.py) [S/W 문제해결 기본] 1일차 - Flatten 성공
 
 ### SWEA [1983](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1983.py) 조교의 성적 매기기 성공
+
+### SWEA [1989](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1989.py) 초심자의 회문검사 성공
+
+### SWEA [1984](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1984.py) 중간 평균값 구하기 성공
+
+### SWEA [1976](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1976.py) 시각 덧셈 성공
