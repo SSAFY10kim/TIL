@@ -29,3 +29,7 @@
 ### SWEA [1984](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1984.py) 중간 평균값 구하기 성공
 
 ### SWEA [1976](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1976.py) 시각 덧셈 성공
+
+### SWEA [1970](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1970.py) 쉬운 거스름돈 성공
+
+### SWEA [1940](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/clear/1940.py) 가랏 RC카 성공

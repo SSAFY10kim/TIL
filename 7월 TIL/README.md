@@ -14,3 +14,4 @@
 
 [2023-07-21](https://github.com/SSAFY10kim/TIL/blob/master/7%EC%9B%94%20TIL/0721.md) 1학기 관통PJT 1주차
 
+[2023-07-24](https://github.com/SSAFY10kim/TIL/blob/master/7%EC%9B%94%20TIL/0724.md) 데이터구조,**메서드**,str.메서드, list.메서드
