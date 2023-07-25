@@ -1,31 +1,34 @@
-# hw_8_4.py
+class Fourcal:
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
 
-# 아래 클래스를 수정하시오.
-class UserInfo:
-    def __init__(self):
-        self.user_data = {}
+    def setdata(self, first, second):
+        self.first = first
+        self.second = second
+
+    def sum(self):
+        return self.first + self.second
     
-    def get_user_info(self):
-        while True:
-            try:
-                user_name = input("이름을 입력하세요: ")
-                user_age = int(input("나이를 입력하세요: "))
-                self.user_data['이름'] = user_name
-                self.user_data['나이'] = user_age
-                break
-                
-            except:
-                print("나이는 숫자로 입력해야 합니다.")
-                return False
+    def sub(self):
+        return self.first - self.second
+    
+    def mul(self):
+        return self.first * self.second
+    
+    def div(self):
+        return self.first / self.second
 
-    def display_user_info(self):
-        if '이름' in self.user_data and '나이' in self.user_data:
-            print("사용자 정보:")
-            print(f"이름: {self.user_data['이름']}")
-            print(f"나이: {self.user_data['나이']}")
+class Morecal(Fourcal):
+    def div(self):
+        if self.second == 0:
+            return 0
         else:
-            print('사용자 정보가 입력되지 않았습니다.')
+            self.first / self.second
 
-user = UserInfo()
-user.get_user_info()
-user.display_user_info()
+a = [1,2,3,4]
+b = sum(a)
+print(b)
+
+c = Fourcal(4,2)
+print(c.sum())      # 지역변수, 전역변수처럼 함수도 Scope 영향을 받는가?
