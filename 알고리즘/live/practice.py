@@ -1,31 +1,20 @@
-# hw_8_4.py
+# hw_7_2.py
 
 # 아래 클래스를 수정하시오.
-class UserInfo:
-    def __init__(self):
-        self.user_data = {}
+class StringRepeater:
+    def __init__(self, num, my_str):
+        self.num = num
+        self.my_str = my_str
+
+    def set_data(self, num, my_str):
+        self.num = num
+        self.my_str = my_str
     
-    def get_user_info(self):
-        while True:
-            try:
-                user_name = input("이름을 입력하세요: ")
-                user_age = int(input("나이를 입력하세요: "))
-                self.user_data['이름'] = user_name
-                self.user_data['나이'] = user_age
-                break
-                
-            except:
-                print("나이는 숫자로 입력해야 합니다.")
-                return False
+    def repeat_string(self):
+        for _ in range(self.num):
+            print(self.my_str)
 
-    def display_user_info(self):
-        if '이름' in self.user_data and '나이' in self.user_data:
-            print("사용자 정보:")
-            print(f"이름: {self.user_data['이름']}")
-            print(f"나이: {self.user_data['나이']}")
-        else:
-            print('사용자 정보가 입력되지 않았습니다.')
-
-user = UserInfo()
-user.get_user_info()
-user.display_user_info()
+repeater1 = StringRepeater(3, "Hello")
+repeater1.repeat_string()
+repeater1.set_data(10,'a')
+repeater1.repeat_string()
