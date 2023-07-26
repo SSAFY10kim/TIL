@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # hw_7_2.py
 
 # 아래 클래스를 수정하시오.
@@ -19,7 +18,7 @@ repeater1 = StringRepeater(3, "Hello")
 repeater1.repeat_string()
 repeater1.set_data(10,'a')
 repeater1.repeat_string()
-=======
+
 class Fourcal:
     def __init__(self, first, second):
         self.first = first
@@ -54,4 +53,3 @@ print(b)
 
 c = Fourcal(4,2)
 print(c.sum())      # 지역변수, 전역변수처럼 함수도 Scope 영향을 받는가?
->>>>>>> eb3d947a572ef5b3c16147cd5512393de803cf9c
