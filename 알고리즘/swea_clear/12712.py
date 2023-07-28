@@ -27,6 +27,8 @@ for t in range(T):
                 c = i + k
                 d = j + k
 
+                
+
                 # 십자모양
                 if a >= 0:
                     plus.append(matrix[i-k][j]) # 상
@@ -57,6 +59,4 @@ for t in range(T):
     else:
         print('#{0} {1}' .format(t+1, max(ans_cross)))        
         
-# 인덱스 에러 나지 않도록 범위 내에 있는지 확인 하는 작업 진행
-# 중심점 이동? 2중 반복문 이용할것
-# 2차원 배열 = [list(map(int, input().split())) for _ in range(-)]
+                
