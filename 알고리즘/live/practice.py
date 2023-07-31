@@ -17,5 +17,3 @@ for t in range(1, T+1):
             max_count = c
     
     print(f'#{t} {num_count.index(c)} {c}')
-
-

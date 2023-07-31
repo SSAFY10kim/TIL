@@ -37,3 +37,6 @@
 ### SWEA [1284](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/swea_clear/1284.py) 수도 요금 경쟁 성공
 
 ### SWEA [2805](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/swea_clear/2805.py) 농작물 수확하기 성공
+
+### SWEA [1289](https://github.com/SSAFY10kim/TIL/blob/master/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/swea_clear/1289.py) 원재의 메모리 복구하기 성공
+
