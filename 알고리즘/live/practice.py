@@ -1,22 +1,21 @@
-def gcd(x, y):                  # 유클리드 호제법(최대공약수)
-    if y == 0:
-        return x
-    else:
-        return gcd(y, x % y)
+T = int(input())
+
+for t in range(1, T+1):
+    num = int(input())
+
+    number = list(map(int, input()))
+
+    num_lst = [0,1,2,3,4,5,6,7,8,9]
+    num_count = [0,0,0,0,0,0,0,0,0,0]
+
+    for n in number:
+        num_count[n] += 1
     
-def lcm(x, y):                  # 유클리드 호제법(최소공배수)
-    result = (x*y) // gcd(x,y)  # 최소 공배수 = 두수의 곱 // 최대공약수
-    return result
-
-t = int(input())
-
-for _ in range(t):
-    a, b = map(int, input().split())
-
-    if b > a:
-        a, b = b, a
-
-    print(lcm(a,b))
-
+    for c in num_count:
+        max_count = num_count[0]
+        if c > max_count:
+            max_count = c
     
-    
+    print(f'#{t} {num_count.index(c)} {c}')
+
+
