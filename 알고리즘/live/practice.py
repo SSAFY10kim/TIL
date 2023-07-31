@@ -1,22 +1,16 @@
-def gcd(x, y):                  # 유클리드 호제법(최대공약수)
-    if y == 0:
-        return x
-    else:
-        return gcd(y, x % y)
+# ws_5_3.py
+
+# 아래 함수를 수정하시오.
+def sort_tuple(unsorted_tuple):
+    for i in range(unsorted_tuple):
+        k = len(unsorted_tuple) - i
+        for j in range(1,k):
+            if unsorted_tuple[j-1] >= unsorted_tuple[j]:
+                temp = unsorted_tuple[j-1]
+                unsorted_tuple[j-1] = unsorted_tuple[j]
+                unsorted_tuple[j] = temp 
     
-def lcm(x, y):                  # 유클리드 호제법(최소공배수)
-    result = (x*y) // gcd(x,y)  # 최소 공배수 = 두수의 곱 // 최대공약수
-    return result
+    return unsorted_tuple
 
-t = int(input())
-
-for _ in range(t):
-    a, b = map(int, input().split())
-
-    if b > a:
-        a, b = b, a
-
-    print(lcm(a,b))
-
-    
-    
+result = sort_tuple([5, 2, 8, 1, 3])
+print(result)
