@@ -1,19 +1,23 @@
-# 1284. 수도 요금 경쟁
+# import sys
+
+# sys.stdin = open(r'C:\Users\SSAFY\Desktop\TIL\알고리즘\input.txt','r')
 
 T = int(input())
 
-for t in range(T):
-    p, q, r, s, w = map(int, input().split())
+for t in range(1, T+1):
+    num = int(input())
 
-    a_charge = p * w
+    number = list(map(int, input()))
+
+    num_lst = [0,1,2,3,4,5,6,7,8,9]
+    num_count = [0,0,0,0,0,0,0,0,0,0]
+
+    for n in number:
+        num_count[n] += 1
     
-    b_charge = 0
-    if r >= w:
-        b_charge = q
-    else:
-        b_charge = q + (w-r) * s
+    for c in num_count:
+        max_count = num_count[0]
+        if c > max_count:
+            max_count = c
     
-    if a_charge >= b_charge:
-        print(f'#{t+1} {b_charge}')
-    else:
-        print(f'#{t+1} {a_charge}')
+    print(f'#{t} {num_count.index(c)} {c}')
