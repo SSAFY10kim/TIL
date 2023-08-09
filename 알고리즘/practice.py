@@ -1,23 +1,33 @@
-# import sys
+from collections import deque
 
-# sys.stdin = open(r'C:\Users\SSAFY\Desktop\TIL\알고리즘\input.txt','r')
+def bfs(graph, start, visited):
+    # 큐 구현을 위해 deque 라이브러리 사용
+    queue = deque([start])
+    # 현재 노드를 방문 처리
+    visited[start] = True
+    # 큐가 빌때까지 반복
+    while queue:
+        # 큐에서 하나의 원소를 뽑아 출력하기
+        v = queue.popleft()
+        print(v, end = ' ')
+        # 아직 방문하지 않은 인접한 원소들을 큐에 삽입
+        for i in graph[v]:
+            if not visited[i]:
+                queue.append(i)
+                visited[i] = True
 
-T = int(input())
+graph = [
+    [],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [3,4],
+    [7],
+    [2,6,8],
+    [1,7]
+]
 
-for t in range(1, T+1):
-    num = int(input())
+visited = [False] * 9
 
-    number = list(map(int, input()))
-
-    num_lst = [0,1,2,3,4,5,6,7,8,9]
-    num_count = [0,0,0,0,0,0,0,0,0,0]
-
-    for n in number:
-        num_count[n] += 1
-    
-    for c in num_count:
-        max_count = num_count[0]
-        if c > max_count:
-            max_count = c
-    
-    print(f'#{t} {num_count.index(c)} {c}')
+bfs(graph, 1, visited)
