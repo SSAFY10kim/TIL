@@ -2,41 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    .outer-box {
-      text-align: center;
-      width : 400px;
-      height: 200px;
-      border: 2px solid black;
-      color: red;
+    body p {
+      color: blue;
     }
-
-		/* 추가 css 코드 작성 1 */
-		.outer-box .inner-box {
-      border: inherit;
-    }
-    
-    .inner-box {
-      width : 200px;
-      height: 100px;
-			/* 추가 css 코드 작성 2 */
-			text-align: left;
-      color: black;
+    body > p {
+      color: crimson;
     }
 
   </style>
 </head>
 <body>
-  <div class="outer-box">
-    <div>
-      <span>첫 번째</span>
-    </div>
-    <div class="inner-box">
-      <span>두 번째</span>
-    </div>
-  </div>
+  <p>자식</p>
+  <ul>
+    <p>손자</p>
+  </ul>
+  <p>자식</p>
 </body>
 </html>
+
+<!-- 자손 결합자 ('space')는 모든 하위요소를 선택함
+      자식 결합자 ('>')는 직계 자식만을 요소로 선택함
+      선택할 요소의 범위가 다르다-->
