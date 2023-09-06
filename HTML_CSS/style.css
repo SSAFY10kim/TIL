@@ -1,19 +1,22 @@
-h2 {
-  color: darkviolet !important;
+.container {
+  display: flex;
+  width: 800px;
+  height: 800px;
+  flex-wrap: wrap;
 }
 
-p {
-  color: orange;
+.black {
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  box-sizing: border-box;
 }
 
-.blue {
-  color: blue;
-}
-
-.green {
-  color: green;
-}
-
-#red {
-  color: red;
+.white {
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  box-sizing: border-box
 }
