@@ -1,58 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>The World Wide Web project</title>
-  <style>
-    .main-title {
-      text-align: center;
-      background-color: gainsboro;
-      line-height: 1.8;
-    }
+<!-- 1. menus 리스트를 반복문을 활용하여 0번부터 출력하시오 -->
 
-    .sub-title {
-      font-size: 20px;
-      font-weight: bold;
-      line-height: 2;
-    }
+{% for menu in menus %}
+  <p>{{ forloop.counter0 }}번째 메뉴 : {{ menu }}</p>
+{% endfor %}
 
-    .contents {
-      font-size: 16px;
-      font-weight: normal;
-    }
+ 
+<!-- 2. users 리스트가 비어있다면 현재 가입한 유저가 없습니다.를 출력하시오  -->
 
-    dl dd {
-      margin-left: 0;
-    }
-  </style>
-</head>
-<body>
-<header>
-  <div class="main-title">
-    <h1>World Wide Web</h1>
-    <p>The WorldWideWeb (W3) is a wide-area <a href="">hypermedia</a> information retrieval initiative aiming to give universal access to a large universe of documents.</p>
-  </div>
-</header>
-<p class="sub-title">Everything there is online about W3</p>
-<p>Everything there is online about W3 is linked directly or indirectly to this document, including an <a href="">executive summary</a> of the project, <a href="">Mailing lists</a>, <a href="">Policy</a>, November's <a href="">W3 news</a>, <a href="">Frequently Asked Questions</a>.</p>
-<dl>
-  <dt class="sub-title">What's out there?</dt>
-  <dd class="contents">Pointers to the world's online information, <a href="">subjects</a>, <a href="">W3 servers</a>, etc.</dd>
-  <dt class="sub-title">Help</dt>
-  <dd class="contents">on the browser you are using</dd>
-  <dt class="sub-title">Software Products</dt>
-  <dd class="contents">A list of W3 project components and their current state. (e.g. <a href="">Line Mode</a>, X11 <a href="">Viola</a>, <a href="">NeXTStep</a>, <a href="">Servers</a>, <a href="">Tools</a>, <a href="">Mail robot</a>, <a href="">Library</a>)</dd>
-  <dt class="sub-title">Technical</dt>
-  <dd class="contents">Details of protocols, formats, program internals, etc.</dd>
-  <dt class="sub-title">Bibliography</dt>
-  <dd class="contents">Paper documentation on W3 and references.</dd>
-  <dt class="sub-title">People</dt>
-  <dd class="contents">A list of some people involved in the project.</dd>
-  <dt class="sub-title">History</dt>
-  <dd class="contents">A summary of the history of the project.</dd>
-  <dt class="sub-title">How can I help?</dt>
-  <dd class="contents">If you would like to support the web..</dd>
-  <dt class="sub-title">Getting code</dt>
-  <dd class="contents">Getting the code by <a href="">anonymous FTP</a>, etc.</dd>
-</dl>
-</body>
-</html>
+{% for user in users %}
+  <p>{{ user }}</p>
+{% empty %}
+  <p>현재 가입한 유저가 없습니다.</p>
+{% endfor %}
+
+<!-- 3. 첫 번째 반복문일 때와 아닐 때를 조건문으로 분기처리하시오  -->
+
+{% if forloop.first %}
+  <p>첫 번째 반복문입니다.</p>
+{% else %}
+  <p>첫 번째 반복문이 아닙니다.</p>
+{% endif %}
+
+<!-- 4. 출력된 결과가 주석과 같아지도록 하시오  -->
+
+<!-- 5 -->
+<p>{{ 'hello'|upper }}</p>
+<!-- My Name Is Tom -->
+<p>{{ 'my name is tom'|title}}</p>
+
+<!-- 5. 변수 today에 datetime 객체가 들어있을 때 출력된 결과가 주석과 같아지도록 작성하시오  -->
+
+<!-- 2020년 02월 02일 (Sun) PM 02:02 -->
+{{ today|date:"Y년 m월 d일 (D) A h:i" }}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나만의 웹 사이트</title>
+  <!-- 부트스트랩 적용 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <!-- Noto sans 폰트 적용 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="header">
+    <!-- 네이게이션 바 -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#frontpage">Main</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#my-intro">Intro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#project">Project</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#skills">Skills</a>
+              </li>
+          </div>
+      </div>
+    </nav>
+  </header>
+  <!-- 메인 콘텐츠 -->
+  <main id="frontpage" class="frontpage">
+    <div class="container">
+      <div class="row">
+        <div class="item col-3">
+          <img src="images/vision.png" alt="vision" width="100%" height="100%">
+        </div>
+        <div class="item col-9">
+          <img src="images/coding-wallpaper.jpg" alt="" height="100%" width="100%" opacity: 0.2;>
+          <p class="my-name">안녕하세요<br>개발자 김동영입니다</p>
+          <p class="my-introduce">공부가 취미인 풀 스택 웹 개발자입니다.<br>
+            매우 꼼꼼한 성격, 그리고 공부를 밥 먹듯이 하는 습관이 저의 장점입니다.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- 자기 소개-->
+  <section id="my-intro" class="my-intro">
+    <div class="container">
+      <div class="row">
+        <div class="item col-2">
+          <img src="images/picture.png" alt="" width="100%" height="100%">
+        </div>
+        <div class="item col-10">
+          <div class="container">                      
+            <div class="row text-center justify-content-center mb-5">
+                <div class="col-xl-6 col-lg-8">
+                    <h2 class="font-weight-bold">About me</h2>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col">
+                    <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                        <div class="timeline-step">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                                <div class="inner-circle"></div>
+                                <p class="h6 mt-3 mb-1">2015</p>
+                                <p class="h6 text-muted mb-0 mb-lg-0">동아대학교<br>화학공학과 입학</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                                <div class="inner-circle"></div>
+                                <p class="h6 mt-3 mb-1">2022</p>
+                                <p class="h6 text-muted mb-0 mb-lg-0">개발공부<br> 독학 시작</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                                <div class="inner-circle"></div>
+                                <p class="h6 mt-3 mb-1">2023</p>
+                                <p class="h6 text-muted mb-0 mb-lg-0">싸피 10기<br> 과정 수강</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2010">
+                                <div class="inner-circle"></div>
+                                <p class="h6 mt-3 mb-1">202n</p>
+                                <p class="h6 text-muted mb-0 mb-lg-0">취직할수 있을까...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 프로젝트 -->
+  <section id="project" class="project">
+    <div class="container">
+      <div class="row">
+        <div class="item col-6">
+          <a href="https://github.com/SSAFY10kim/TIL"><img src="images/github-logo.png" width="80%" height="60%"></a>
+          <p class="project-text"><span class="strike-through">매일</span> 공부한 기록</p>
+        </div>
+        <div class="item col-6">
+          <a href="https://solved.ac/profile/lemontime"><img src="images/solved-logo.png" width="80%" height="60%"></a>
+          <p class="project-text">알고리즘 풀이 기록</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 기술 스택-->
+  <section id="skills" class="skills">
+    <div class="my-stack">
+      Python
+    </div>
+    <div class="container">
+      <div class="row1">
+            <div class="item col-2">
+              <img src="images/html-css.png" alt="html-css" height="100%" width="80%">
+            </div>
+            <div class="item col-2">
+              <img src="images/Django-logo.jpg" alt="Django" height="100%" width="80%">
+            </div>
+            <div class="item col-2">
+              <img src="images/MySQL-Logo.png" alt="MySQL" height="100%" width="80%">
+            </div>
+            <div class="item col-2">
+              <img src="images/Docker-logo.png" alt="Docker" height="100%" width="80%">
+            </div>
+      </div>
+      <div class="row2">
+        <div class="item col-2">
+          HTML/CSS
+        </div>
+        <div class="item col-2">
+          Django
+        </div>
+        <div class="item col-2">
+          MySQL
+        </div>
+        <div class="item col-2">
+          Docker
+        </div>
+  </div>
+    </div>
+  </section>
+  <!-- 꼬리말 -->
+  <footer class="footer">footer</footer>
+
+  <!-- 반응형 웹 -->
+  <!-- bootstrap grid system -->
+  <!-- 470px 밑으로는 웹을 제공하지 않는다-->
+  <h1 class="not-provided">이 사이트는 470px 사이즈 미만에서는 보이지 않습니다.</h1>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

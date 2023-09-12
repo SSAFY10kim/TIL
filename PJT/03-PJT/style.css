@@ -1,0 +1,231 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container-fluid {
+  background-color: lightblue;
+}
+
+.container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  /* border: 1px solid; */
+  border-radius: 0.3rem;
+  background: white;
+  display: grid;
+  gap: 10px;
+}
+
+.background-img
+
+.row {
+  background: white;
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.about-me {
+  background: white;
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.item {
+  text-align: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: black;
+  /* border: 1px solid; */
+  border-radius: 8px;
+  height: 275px;
+  position: relative;
+}
+
+.about-me-text {
+  font-size: 24px;
+}
+
+.intro {
+  text-align: left;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: black;
+  /* border: 1px solid; */
+  border-radius: 8px;
+  height: 220px;
+  flex-direction: column;
+  line-height: 40px;
+}
+
+.my-stack {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 30px;
+}
+
+.skills {
+  align-items: center;
+  justify-content: center;
+}
+
+.skills .row1 .item {
+  height: 120px;
+}
+
+.skills .row1 {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.skills .row2 .item {
+  height: 30px;
+}
+
+.skills .row2 {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.my-name {
+  font-weight: 700;
+  font-size: 35px;
+  letter-spacing: 4px;
+  margin-top: 10px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+.my-introduce {
+  display: flex;
+  font-weight: 400;
+  font-size: 20px;
+  margin-top: 40px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+
+.project-text {
+  height: 110px;
+  font-size: 30px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.strike-through {
+  text-decoration: line-through;
+  margin-right: 4px;
+}
+
+.frontpage,
+.my-intro,
+.skills,
+.project {
+  height: 300px;
+  border-bottom: 2px solid black;
+}
+
+.footer {
+  height: 50px;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-provided {
+  display: none;
+}
+
+/* 470px 밑으로 가면, not-provided 얘만 보이도록 설정 */
+@media (max-width: 470px) {
+  main, section, nav, footer, .skills {
+    display: none;
+  }
+  .not-provided {
+    display: block;
+  }
+}
+
+body{margin-top:20px;}
+.timeline-steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.timeline-steps .timeline-step {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 1rem
+}
+
+@media (min-width:768px) {
+    .timeline-steps .timeline-step:not(:last-child):after {
+        content: "";
+        display: block;
+        border-top: .25rem dotted #3b82f6;
+        width: 3.46rem;
+        position: absolute;
+        left: 7.5rem;
+        top: .3125rem
+    }
+    .timeline-steps .timeline-step:not(:first-child):before {
+        content: "";
+        display: block;
+        border-top: .25rem dotted #3b82f6;
+        width: 3.8125rem;
+        position: absolute;
+        right: 7.5rem;
+        top: .3125rem
+    }
+}
+
+.timeline-steps .timeline-content {
+    width: 10rem;
+    text-align: center
+}
+
+.timeline-steps .timeline-content .inner-circle {
+    border-radius: 1.5rem;
+    height: 1rem;
+    width: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3b82f6
+}
+
+.timeline-steps .timeline-content .inner-circle:before {
+    content: "";
+    background-color: #3b82f6;
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    min-width: 3rem;
+    border-radius: 6.25rem;
+    opacity: .5
+}
