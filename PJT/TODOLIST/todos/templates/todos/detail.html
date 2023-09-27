@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% if todo.important %}
+    <h1>빨리 해야할 일</h1>
+  {% else %}
+    <h1>TO DO</h1>
+  {% endif %}
+  <p>{{ todo.pk }}번째 할 일</p>
+  <a href="{% url "todos:edit" todo.pk %}">[계획 수정....]</a>
+  <hr>
+  <ul>
+    <li>해야 할 일 : {{ todo.title }}</li>
+    <li>설명 : {{todo.description }}</li>
+  </ul>
+  <form action="{% url "todos:delete" todo.pk %}" method='POST'>
+    {% csrf_token %}
+    <input type="submit" value="완료!!!">
+  </form>
+  <hr>
+  <p>작성 시간 : {{ todo.created_at }}</p>
+  <a href="{% url "todos:index" %}">[BACK]</a>
+  </body>
+</html>

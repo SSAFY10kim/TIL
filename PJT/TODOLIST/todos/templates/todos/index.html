@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>ToDoList</h1>
+  <a href="{% url "todos:new" %}">[CREATE]</a>
+  {% for todo in todos %}
+  <p>{{ todo.pk }}번째 할 일</p>
+  <p>해야 할 일 : {{ todo.title }}</p>
+  <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
+  <hr>
+  {% endfor %}
+</body>
+</html>

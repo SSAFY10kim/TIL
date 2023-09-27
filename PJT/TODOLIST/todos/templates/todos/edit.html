@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>해야할 일 생성</h1>
+  <form action="{% url "todos:update" todo.pk %}" method="POST">
+    {% csrf_token %}
+    <div>
+      <label for="title">해야할 일 : </label>
+      <input type="text" id="title" name="title" value="{{ todo.title }}">
+    </div>
+    <div>
+      <label for="description">설명 : </label>
+      <textarea name="description" id="description" cols="30" rows="10">{{ todo.description }}</textarea>
+    </div>
+    <label for="important">Important<input type="checkbox" name="important" value="True" checked>여기 적은건 다 중요한 일아닐까?</label><br>
+    <input type="submit">
+  </form>
+</body>
+</html>
