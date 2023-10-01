@@ -8,11 +8,29 @@
 <body>
   <h1>ToDoList</h1>
   <a href="{% url "todos:new" %}">[CREATE]</a>
+  <a href="{% url "todos:compindex" %}">[완료 목록]</a>
   {% for todo in todos %}
-  <p>{{ todo.pk }}번째 할 일</p>
-  <p>해야 할 일 : {{ todo.title }}</p>
-  <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
-  <hr>
+    {% if todo.important %}
+      <p>★★{{ todo.pk }}번째 할 일★★</p>
+      <p>해야 할 일 : {{ todo.title }}</p>
+      {% if d_days %}
+        <p>남은 기간 : {{ d_days }}일</p>
+      {% else %}
+        <p>지금까지 안하고 뭐했니...</p>
+      {% endif %}
+      <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
+      <hr>
+    {% else %}
+      <p>{{ todo.pk }}번째 할 일</p>
+      <p>해야 할 일 : {{ todo.title }}</p>
+      {% if d_days %}
+        <p>남은 기간 : {{ d_days }}일</p>
+      {% else %}
+        <p>지금까지 안하고 뭐했니...</p>
+      {% endif %}
+      <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
+      <hr>
+    {% endif %}
   {% endfor %}
 </body>
 </html>

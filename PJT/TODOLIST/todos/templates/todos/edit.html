@@ -17,8 +17,13 @@
       <label for="description">설명 : </label>
       <textarea name="description" id="description" cols="30" rows="10">{{ todo.description }}</textarea>
     </div>
+    <div>
+      <label for="target_day">기간 : </label>
+      <input type="text" id="target_day" name="target_day" placeholder="YYYY-MM-DD" value={{ todo.target_day|date:'Y-m-d' }}>
+    </div>
     <label for="important">Important<input type="checkbox" name="important" value="True" checked>여기 적은건 다 중요한 일아닐까?</label><br>
     <input type="submit">
   </form>
+  <a href="{% url "todos:index" %}">[취소]</a>
 </body>
 </html>
