@@ -9,14 +9,11 @@ def index(request):
     d_days = []
     for todo in todos:
         remaining_days = (todo.target_day - timezone.now().date()).days
-        if remaining_days >= 0:
-            d_days.append(remaining_days)
-        else:
-            d_days.append(None)  # 날짜가 지났을 경우 None 또는 다른 의미 있는 값 사용 가능
+        d_days.append(remaining_days)
+    combined_data = list(zip(todos, d_days))
     
     context = {
-        'todos': todos,
-        'd_days': d_days,
+        'combined_data': combined_data,
     }
     return render(request, 'todos/index.html', context)
 
@@ -91,3 +88,7 @@ def cal_d_day(request, todo_id):
         'd_day' : d_day,
     }
     return render(request, 'todos/index.html', context)
+
+def reset(request):
+    Todolist.objects.all().delete()
+    return redirect('todos:index')

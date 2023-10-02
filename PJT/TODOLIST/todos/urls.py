@@ -13,4 +13,5 @@ urlpatterns = [
     path('compindex/', views.compindex, name='compindex'),
     path('<int:pk>/completed/', views.completed, name='completed'),
     path('<int:pk>/compdetail/', views.compdetail, name='compdetail'),
+    path('reset/', views.reset, name='reset'),
     ]
