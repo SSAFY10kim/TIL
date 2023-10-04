@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>이걸 내가 다했다...</h1>
+  {% for todo in todos %}
+    <p>{{ todo.pk }} 번째 완료 한 일</p>
+    <ul>
+      <li>완료 한 일 : {{ todo.title }}</li>
+      <li>설명 : {{ todo.description }}</li>
+    </ul>
+    <p>작성 시간 : {{ todo.created_at }}</p>
+    <a href="{% url "todos:compdetail" todo.pk %}">[DETAIL]</a>
+    <hr>
+  {% endfor %}
+  <a href="{% url "todos:index" %}">[BACK]</a>
+</body>
+</html>
