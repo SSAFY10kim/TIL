@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>문제1. 데이터 읽어오기</h1>
+<table>
+  <tr>
+    {% for column in df.columns %}
+      <th>{{ column }}</th>
+    {% endfor %}
+  </tr>
+  <tr>
+    {% for row in df.values %}
+      <tr>
+        {% for value in row %}
+          <th>{{ value }}</th>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tr>
+</table>
+<style>
+  th {
+    background-color: #f2f2f2; 
+    font-size : 12px;
+  }
+
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+</style>
+{% endblock content %}
