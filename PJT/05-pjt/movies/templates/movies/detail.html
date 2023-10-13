@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1>DETAIL PAGE</h1>
+  <hr>
+  {% if movie.image %}
+    <img src="{{ movie.image.url }}" class="card-img-top img-fluid img-thumbnail fixed-image-size" alt="img.jpg" style="max-width: 50%; height: auto;">
+  {% else %}
+    <img src="{% static "movies/blank_img.png" %}" class="img-fluid img-thumbnail fixed-image-size" alt="img">
+  {% endif %}
+  <h2>{{ movie.title }}</h2>
+  <p>{{ movie.summary }}</p>
+  <p>장르 : {{ movie.genre }}</p>
+  <p>평점 : {{ movie.score }}</p>
+  <hr>
+  <a href="{% url "movies:update" movie.pk %}" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">UPDATE</a>
+  <a href="{% url "movies:delete" movie.pk %} " class="btn btn-danger btn-sm active" role="button" aria-pressed="true">DELETE</a>
+  <hr>
+  <a href="{% url "movies:index" %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">BACK</a>
+  <hr>
+  <form action="{% url "movies:create_comments" movie.pk %}" method="POST">
+    {% csrf_token %}
+    {{ comment_form }}
+    <input class="btn btn-secondary btn-sm active" type="submit" value="등록">
+  </form>
+  <hr>
+  <h4>댓글 목록 : {{ comments | length }}개</h4>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        {{ forloop.counter}}번째 댓글  <br> 작성자 : {{ comment.user }} - {{ comment.content }}
+        {% if request.user == comment.user %}
+          <form action="{% url "movies:delete_comments" movie.pk comment.pk %}" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-danger btn-sm active" type="submit" value="삭제">
+          </form>
+        {% endif %}
+      </li>
+    {% empty %}
+      <h4>댓글이 없어요...</h4>
+    {% endfor %}
+  </ul>
+{% endblock content %}
