@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1>DETAIL PAGE</h1>
+  <hr>
+  {% if movie.image %}
+    <img src="{{ movie.image.url }}" class="card-img-top img-fluid img-thumbnail fixed-image-size" alt="img.jpg">
+  {% else %}
+    <img src="{% static "movies/blank_img.png" %}" class="img-fluid img-thumbnail fixed-image-size" alt="img">
+  {% endif %}
+  <h2>{{ movie.title }}</h2>
+  <p>{{ movie.summary }}</p>
+  <hr>
+  <a href="{% url "movies:update" movie.pk %}" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">UPDATE</a>
+  <a href="{% url "movies:delete" movie.pk %} " class="btn btn-danger btn-sm active" role="button" aria-pressed="true">DELETE</a>
+  <hr>
+  <a href="{% url "movies:index" %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">BACK</a>
+  <hr>
+{% endblock content %}
