@@ -75,14 +75,3 @@ def change_password(request):
         'form': form,
     }
     return render(request, 'accounts/change_password.html', context)
-
-
-def test(request):
-    if request.method == "POST":
-        pass
-    else:
-        form = custcomform():
-    context = {
-        asdasd
-    }
-    

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>{{ todo.user.username }}이/가 해야할 일</h2>
+  <hr>
+  <ul>
+    <li>해야 할 일 : {{ todo.title }}</li>
+    <li>설명 : {{todo.description }}</li>
+  </ul>
+  <hr>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ comment_form }}
+    <input type="submit" value="댓글 등록">
+  </form>
+  <hr>
+  <p>작성 시간 : {{ todo.created_at }}</p>
+  <a href="{% url "todos:index" %}">[BACK]</a>
+{% endblock content %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Todolist
 from django.utils import timezone
 from datetime import datetime
-from .forms import TodolistForm
+from .forms import TodolistForm, CommentForm
 
 # Create your views here.
 def index(request):
@@ -93,3 +93,25 @@ def cal_d_day(request, todo_id):
 def reset(request):
     Todolist.objects.all().delete()
     return redirect('todos:index')
+
+def board(request):
+    todos = Todolist.objects.filter(completed=False)
+    d_days = []
+    for todo in todos:
+        remaining_days = (todo.target_day - timezone.now().date()).days
+        d_days.append(remaining_days)
+    combined_data = list(zip(todos, d_days))
+    
+    context = {
+        'combined_data': combined_data,
+    }
+    return render(request, 'todos/board.html', context)
+
+def board_detail(request, pk):
+    todo = Todolist.objects.get(pk=pk)
+    comment_form = CommentForm()
+    context = {
+        'todo' : todo,
+        'comment_form' : comment_form,
+    }
+    return render(request, 'todos/boarddetail.html', context)

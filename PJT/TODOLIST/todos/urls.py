@@ -13,4 +13,9 @@ urlpatterns = [
     path('<int:pk>/completed/', views.completed, name='completed'),
     path('<int:pk>/compdetail/', views.compdetail, name='compdetail'),
     path('reset/', views.reset, name='reset'),
+    path('board/', views.board, name='board'),
+    path('<int:pk>/board/', views.board_detail, name='board_detail'),
     ]
+
+
+# 자유게시판 detail(삭제, 완료 안보이게), 댓글, 좋아요, 팔로우
