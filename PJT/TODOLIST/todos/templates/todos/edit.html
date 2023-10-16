@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
   <h1>해야할 일 생성</h1>
   <form action="{% url "todos:update" todo.pk %}" method="POST">
     {% csrf_token %}
@@ -25,5 +19,4 @@
     <input type="submit">
   </form>
   <a href="{% url "todos:index" %}">[취소]</a>
-</body>
-</html>
+{% endblock content %}

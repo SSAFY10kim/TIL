@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>SIGNUP PAGE</h1>
+<hr>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-outline-secondary" type="submit" value="생성">
+</form>
+{% endblock content %}

@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+
+{% block content %}
   <h1>해야할 일 생성</h1>
+  <hr>
   <form action="{% url "todos:create" %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit", value="등록">
+  </form>
+  {% comment %} <form action="{% url "todos:create" %}" method="POST">
     {% csrf_token %}
     <div>
       <label for="title">해야할 일 : </label>
@@ -22,8 +24,7 @@
       <input type="text" id="target_day" name="target_day" placeholder="YYYY-MM-DD">
     </div>
     <label for="important">Important<input type="checkbox" name="important" value="True" checked>여기 적은건 다 중요한 일아닐까?</label><br>
-    <input type="submit">
+    <input class="btn btn-outline-secondary" type="submit">
   </form>
-  <a href="{% url "todos:index" %}">[취소]</a>
-</body>
-</html>
+  <a href="{% url "todos:index" %}">[취소]</a> {% endcomment %}
+{% endblock content %}

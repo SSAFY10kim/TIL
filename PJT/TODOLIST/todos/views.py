@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Todolist
 from django.utils import timezone
 from datetime import datetime
+from .forms import TodolistForm
 
 # Create your views here.
 def index(request):
@@ -17,20 +18,20 @@ def index(request):
     }
     return render(request, 'todos/index.html', context)
 
-def new(request):
-    return render(request, 'todos/new.html')
-
 def create(request):
-    title = request.POST.get('title')
-    description = request.POST.get('description')
-    # created_at = request.POST.get('created_at')
-    completed = request.POST.get('completed', False)
-    important = request.POST.get('important', False)
-    target_day = request.POST.get('target_day')
-
-    todo = Todolist(title=title, description=description, completed=completed, important=important, target_day=target_day)
-    todo.save()
-    return redirect('todos:index')
+    if request.method == 'POST':
+        form = TodolistForm(request.POST)
+        if form.is_valid():
+            todo = form.save(commit=False)
+            todo.user = request.user
+            form.save()
+            return redirect('todos:index')
+    else:
+        form = TodolistForm()
+    context = {
+        'form' : form,
+    }
+    return render(request, 'todos/new.html', context)
 
 def detail(request, pk):
     todo = Todolist.objects.get(pk=pk)

@@ -67,7 +67,7 @@ def update(request):
             'form': form,
         }
     return render(request, 'accounts/update.html', context)
-
+    
 
 @require_POST
 def delete(request):

@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
   {% if todo.important %}
     <h1>빨리 해야할 일</h1>
   {% else %}
@@ -20,14 +14,13 @@
   </ul>
   <form action="{% url "todos:delete" todo.pk %}" method='POST'>
     {% csrf_token %}
-    <input type="submit" value="하기 싫음">
+    <input class="btn btn-outline-danger" type="submit" value="하기 싫음">
   </form>
   <form action="{% url "todos:completed" todo.pk %}" method="POST">
     {% csrf_token %}
-    <input type="submit" value="완료!!!">
+    <input class="btn btn-outline-success" type="submit" value="완료!!!">
   </form>
   <hr>
   <p>작성 시간 : {{ todo.created_at }}</p>
   <a href="{% url "todos:index" %}">[BACK]</a>
-  </body>
-</html>
+{% endblock content %}

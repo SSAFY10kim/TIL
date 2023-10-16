@@ -1,37 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>ToDoList</h1>
-  <a href="{% url "todos:new" %}">[CREATE]</a>
-  <a href="{% url "todos:compindex" %}">[완료 목록]</a>
-  <a href="{% url "todos:reset" %}">[RESET]</a>
-  {% for todo, d_day in combined_data %}
-    {% if todo.important %}
-      <p>★★{{ todo.pk }}번째 할 일★★</p>
-      <p>해야 할 일 : {{ todo.title }}</p>
-        {% if d_day >= 0 %}
-          <p>남은 기간 : {{ d_day }}일</p>
-        {% else %}
-          <p>지금까지 안하고 뭐했니...</p>
-        {% endif %}
-      <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
-      <hr>
-    {% else %}
-      <p>{{ todo.pk }}번째 할 일</p>
-      <p>해야 할 일 : {{ todo.title }}</p>
-        {% if d_day >= 0 %}
-          <p>남은 기간 : {{ d_day }}일</p>
-        {% else %}
-          <p>지금까지 안하고 뭐했니...</p>
-        {% endif %}
-      <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
-      <hr>
+{% extends "base.html" %}
+{% block content %}
+<h1>ToDoList</h1>
+{% comment %} <a href="{% url "todos:new" %}">[CREATE]</a>
+<a href="{% url "todos:reset" %}">[RESET]</a> {% endcomment %}
+<hr>
+<h3>해야할 일</h3>
+<hr>
+{% for todo, d_day in combined_data %}
+  {% if todo.important %}
+    {% if todo.user == request.user %}
+    <p>★★{{ forloop.counter }}번째 할 일★★</p>
+    <p>해야 할 일 : {{ todo.title }}</p>
+      {% if d_day >= 0 %}
+        <p>남은 기간 : {{ d_day }}일</p>
+      {% else %}
+        <p>지금까지 안하고 뭐했니...</p>
+      {% endif %}
+    <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
+    <hr>
     {% endif %}
-  {% endfor %}
-</body>
-</html>
+  {% else %}
+    {% if todo.user == request.user %}
+    <p>{{ forloop.counter }}번째 할 일</p>
+    <p>해야 할 일 : {{ todo.title }}</p>
+      {% if d_day >= 0 %}
+        <p>남은 기간 : {{ d_day }}일</p>
+      {% else %}
+        <p>지금까지 안하고 뭐했니...</p>
+      {% endif %}
+    <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
+    <hr>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% endblock content %}
