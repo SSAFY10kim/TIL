@@ -9,22 +9,4 @@
     {{ form.as_p }}
     <input type="submit", value="등록">
   </form>
-  {% comment %} <form action="{% url "todos:create" %}" method="POST">
-    {% csrf_token %}
-    <div>
-      <label for="title">해야할 일 : </label>
-      <input type="text" id="title" name="title">
-    </div>
-    <div>
-      <label for="description">설명 : </label>
-      <textarea name="description" id="description" cols="30" rows="10"></textarea>
-    </div>
-    <div>
-      <label for="target_day">기간 : </label>
-      <input type="text" id="target_day" name="target_day" placeholder="YYYY-MM-DD">
-    </div>
-    <label for="important">Important<input type="checkbox" name="important" value="True" checked>여기 적은건 다 중요한 일아닐까?</label><br>
-    <input class="btn btn-outline-secondary" type="submit">
-  </form>
-  <a href="{% url "todos:index" %}">[취소]</a> {% endcomment %}
 {% endblock content %}

@@ -7,12 +7,43 @@
     <li>설명 : {{todo.description }}</li>
   </ul>
   <hr>
-  <form action="" method="POST">
+  <p>좋아요 : {{ todo.like_users.all | length }}개</p>
+  <form action="{% url "todos:likes" todo.pk %}" method="POST">
     {% csrf_token %}
-    {{ comment_form }}
-    <input type="submit" value="댓글 등록">
+    {% if request.user in todo.like_users.all %}
+      <button type="submit" class="btn btn-link">
+        <span class="bi bi-heart-fill"></span>
+      </button>
+    {% else %}
+      <button type="submit" class="btn btn-link">
+        <span class="bi bi-heart"></span>
+      </button>
+    {% endif %}
   </form>
   <hr>
+  <form action="{% url "todos:comments_create" todo.pk %}" method="POST">
+    {% csrf_token %}
+    {{ comment_form }}
+    <input type="submit" value="댓글 등록" class="btn btn-outline-secondary">
+  </form>
+  <hr>
+  <h4>댓글 목록 : {{ comments | length}}개</h4>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        {{ comment.user }} - {{ comment.content }}
+        {% if request.user == comment.user %}
+          <form action="{% url "todos:comments_delete" todo.pk comment.pk %}" method="POST" style="display: inline;">
+            {% csrf_token %}
+            <input type="submit" value="삭제">
+          </form>
+        {% endif %}
+      </li>
+    {% empty %}
+      <p>댓글이 없어요...</p>
+    {% endfor %}
+  </ul>
+  <hr>
   <p>작성 시간 : {{ todo.created_at }}</p>
-  <a href="{% url "todos:index" %}">[BACK]</a>
+  <a href="{% url "todos:board" %}">[BACK]</a>
 {% endblock content %}

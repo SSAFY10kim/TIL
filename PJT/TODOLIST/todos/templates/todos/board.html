@@ -4,7 +4,7 @@
 <hr>
 {% for todo, d_day in combined_data %}
   {% if todo.important %}
-    <p>★★{{ todo.user.username }}이 할 일★★</p>
+    <p>★★작성자 : <a href="{% url "accounts:profile" todo.user.username %}">{{ todo.user.username }}</a>★★</p>
     <p>해야 할 일 : {{ todo.title }}</p>
       {% if d_day >= 0 %}
         <p>남은 기간 : {{ d_day }}일</p>
@@ -14,7 +14,7 @@
     <a href="{% url "todos:board_detail" todo.pk %}">[DETAIL]</a>
     <hr>
   {% else %}
-    <p>{{ todo.user.username }}이 할 일</p>
+    <p>작성자 : <a href="{% url "accounts:profile" todo.user.username %}">{{ todo.user.username }}</a></p>
     <p>해야 할 일 : {{ todo.title }}</p>
       {% if d_day >= 0 %}
         <p>남은 기간 : {{ d_day }}일</p>

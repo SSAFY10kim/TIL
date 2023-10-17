@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Todolist
+from .models import Todolist, Comment
 from django.utils import timezone
 from datetime import datetime
 from .forms import TodolistForm, CommentForm
@@ -110,8 +110,39 @@ def board(request):
 def board_detail(request, pk):
     todo = Todolist.objects.get(pk=pk)
     comment_form = CommentForm()
+    comments = todo.comment_set.all()
+    context = {
+        'todo' : todo,
+        'comment_form' : comment_form,
+        'comments' : comments,
+    }
+    return render(request, 'todos/boarddetail.html', context)
+
+def comments_create(request, pk):
+    todo = Todolist.objects.get(pk=pk)
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.todo = todo
+        comment.user = request.user
+        comment_form.save()
+        return redirect('todos:board_detail', todo.pk)
     context = {
         'todo' : todo,
         'comment_form' : comment_form,
     }
     return render(request, 'todos/boarddetail.html', context)
+
+def comments_delete(request, todo_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.user == comment.user:
+        comment.delete()
+    return redirect('todos:board_detail', todo_pk)
+
+def likes(request, pk):
+    todo = Todolist.objects.get(pk=pk)
+    if request.user in todo.like_users.all():
+        todo.like_users.remove(request.user)
+    else:
+        todo.like_users.add(request.user)
+    return redirect('todos:board_detail', pk)

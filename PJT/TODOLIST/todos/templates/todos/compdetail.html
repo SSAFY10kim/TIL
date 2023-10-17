@@ -9,7 +9,9 @@
 </ul>
 <form action="{% url "todos:delete" todo.pk %}" method='POST'>
   {% csrf_token %}
-  <input type="submit" value="보기 싫음">
+  <button type="submit" class="btn btn-outline-danger">
+    <span class="bi bi-trash">  보기 싫음</span>
+  </button>
 </form>
 <hr>
 <p>작성 시간 : {{ todo.created_at }}</p>

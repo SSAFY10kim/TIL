@@ -15,6 +15,12 @@ urlpatterns = [
     path('reset/', views.reset, name='reset'),
     path('board/', views.board, name='board'),
     path('<int:pk>/board/', views.board_detail, name='board_detail'),
+    path('<int:pk>/comments/', views.comments_create, name='comments_create'),
+    path(
+        '<int:todo_pk>/comments/<int:comment_pk>/delete/',
+        views.comments_delete, name='comments_delete',),
+    path('<int:pk>/likes/', views.likes, name='likes'),
+    
     ]
 
 

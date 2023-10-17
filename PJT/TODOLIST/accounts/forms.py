@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import get_user_model
- 
+
 class CustomAuthenticationForm(AuthenticationForm):
     class Meta(AuthenticationForm):
         modle = get_user_model()
@@ -10,6 +10,11 @@ class CustomAuthenticationForm(AuthenticationForm):
     username = forms.CharField(label="아이디", widget=forms.TextInput())
     password = forms.CharField(label="비밀번호", widget=forms.PasswordInput())
 
+    error_messages = {
+        'invalid_login': (
+            '올바른 아이디와 비밀번호를 입력해주세요'
+        ),
+    }
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -71,3 +76,7 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         widget=forms.PasswordInput()
     )
     
+    error_messages = {
+        'password_incorrect' : "기존 패스워드가 잘못됬습니다",
+        'password_mismatch' : "비밀번호 확인이 틀렸습니다"
+    }

@@ -1,0 +1,9 @@
+hr {
+  border: none;
+  height: 1px;
+  background-color: black;
+}
+
+.bi.bi-journal {
+  font-size: 30px;
+}
