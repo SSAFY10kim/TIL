@@ -27,7 +27,7 @@
     <input type="submit" value="댓글 등록" class="btn btn-outline-secondary">
   </form>
   <hr>
-  <h4>댓글 목록 : {{ comments | length}}개</h4>
+  <h4>댓글 목록 : {{ comments | length }}개</h4>
   <ul>
     {% for comment in comments %}
       <li>
@@ -35,7 +35,9 @@
         {% if request.user == comment.user %}
           <form action="{% url "todos:comments_delete" todo.pk comment.pk %}" method="POST" style="display: inline;">
             {% csrf_token %}
-            <input type="submit" value="삭제">
+            <button type="submit" class="btn btn-link">
+                <i class="bi bi-trash"></i>
+            </button>
           </form>
         {% endif %}
       </li>

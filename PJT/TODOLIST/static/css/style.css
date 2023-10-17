@@ -7,3 +7,15 @@ hr {
 .bi.bi-journal {
   font-size: 30px;
 }
+
+.bi.bi-heart-fill {
+  color: red;
+}
+
+.bi.bi-heart {
+  color: red;
+}
+
+.bi.bi-trash {
+  color: black;
+}

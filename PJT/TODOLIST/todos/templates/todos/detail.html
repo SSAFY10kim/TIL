@@ -20,7 +20,7 @@
   <form action="{% url "todos:delete" todo.pk %}" method='POST'>
     {% csrf_token %}
     <button type="submit" class="btn btn-outline-danger">
-      <span class="bi bi-trash">  하기 싫음</span>
+      <span class="bi bi-trash-fill">  하기 싫음</span>
     </button>
   </form>
   <form action="{% url "todos:completed" todo.pk %}" method="POST">

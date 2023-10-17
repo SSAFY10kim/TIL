@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
 <h1><i class="bi bi-journal">ToDoList</i></h1>
 {% comment %} <a href="{% url "todos:new" %}">[CREATE]</a>
@@ -14,7 +16,7 @@
       {% if d_day >= 0 %}
         <p>남은 기간 : {{ d_day }}일</p>
       {% else %}
-        <p>지금까지 안하고 뭐했니...</p>
+        <img src="{% static "image/choonsic.png" %}" alt="img" class="overtime"><br>
       {% endif %}
     <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
     <hr>
@@ -26,7 +28,7 @@
       {% if d_day >= 0 %}
         <p>남은 기간 : {{ d_day }}일</p>
       {% else %}
-        <p>지금까지 안하고 뭐했니...</p>
+        <img src="{% static "image/choonsic.png" %}" alt="img" class="overtime"><br>
       {% endif %}
     <a href="{% url "todos:detail" todo.pk %}">[DETAIL]</a>
     <hr>
