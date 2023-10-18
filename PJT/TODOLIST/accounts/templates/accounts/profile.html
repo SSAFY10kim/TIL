@@ -21,7 +21,9 @@
 <ul>
   {% for todo in person.todolist_set.all %}
     {% if todo.completed == False %}
-      <li><a href="{% url "todos:detail" todo.pk %}">{{ todo.title }}</a></li>
+      {% if todo.check_share == True %}
+        <li><a href="{% url "todos:board_detail" todo.pk %}">{{ todo.title }}</a></li>
+      {% endif %}
     {% endif %}
   {% endfor %}
 </ul>
@@ -36,7 +38,7 @@
 <h2>좋아요 누른 게시글</h2>
   <ul>
     {% for article in person.like_users.all %}
-      <li><a href="{% url "todos:detail" article.pk %}">{{ article.title }}</a></li>
+      <li><a href="{% url "todos:board_detail" article.pk %}">{{ article.title }}</a></li>
     {% endfor %}
   </ul>
 <hr>

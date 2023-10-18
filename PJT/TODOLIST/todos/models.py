@@ -14,6 +14,7 @@ class Todolist(models.Model):
     like_users = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='like_users'
     )
+    check_share = models.BooleanField(default=False)
 
 
 class Comment(models.Model):

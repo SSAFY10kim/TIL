@@ -1,0 +1,20 @@
+User + article_number
+
+Todolist + article_number
+
+
+
+if create:
+    todo.article_number = user.article_number
+    article_number += 1
+    db.save()
+
+elif delete, completed: 
+    todos = Todolist.objects.all()
+    for todo in todos:
+        todo.article_number -= 1
+        db.save()
+    user.article_number -= 1
+이러면 연산 횟수가 너무 많은데...?
+아예 for 처리를 따로해야하나...? 페이지를 따로만든다?
+index 페이지 따로 만들기?

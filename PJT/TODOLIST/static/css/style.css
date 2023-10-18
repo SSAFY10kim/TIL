@@ -24,3 +24,9 @@ hr {
   display: flex;
   gap: 10px;
 }
+
+input[type="checkbox"] {
+  width: 15px; /* 너비를 조정하세요. */
+  height: 15px; /* 높이를 조정하세요. */
+  margin-left: 10px;
+}

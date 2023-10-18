@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Todolist, Comment
 from django.utils import timezone
 from datetime import datetime
 from .forms import TodolistForm, CommentForm
+from django.http import HttpResponseForbidden
 
 # Create your views here.
 def index(request):
@@ -18,6 +20,7 @@ def index(request):
     }
     return render(request, 'todos/index.html', context)
 
+@login_required
 def create(request):
     if request.method == 'POST':
         form = TodolistForm(request.POST)
@@ -33,34 +36,41 @@ def create(request):
     }
     return render(request, 'todos/new.html', context)
 
+@login_required
 def detail(request, pk):
-    todo = Todolist.objects.get(pk=pk)
+    todo = get_object_or_404(Todolist, pk=pk)
+    if request.user != todo.user:
+        return HttpResponseForbidden(
+            '<a href="http://127.0.0.1:8000/">[BACK]</a>'
+            )
     context = {
         'todo' : todo,
     }
     return render(request, 'todos/detail.html', context)
 
+@login_required
 def delete(request, pk):
     todo = Todolist.objects.get(pk=pk)
     todo.delete()
     return redirect("todos:index")
 
-def edit(requets, pk):
+@login_required
+def edit(request, pk):
     todo = Todolist.objects.get(pk=pk)
+    if request.method == "POST":
+        form = TodolistForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save()
+            return redirect('todos:detail', todo.pk)
+    else:
+        form = TodolistForm(instance=todo)
     context = {
         'todo' : todo,
+        'form' : form,
     }
-    return render(requets, 'todos/edit.html', context)
+    return render(request, 'todos/edit.html', context)
 
-def update(request, pk):
-    todo = Todolist.objects.get(pk=pk)
-    todo.title = request.POST.get('title')
-    todo.description = request.POST.get('description')
-    todo.important = request.POST.get('important', False)
-    todo.target_day = request.POST.get('target_day')
-    todo.save()
-    return redirect('todos:detail', todo.pk)
-
+@login_required
 def compindex(request):
     todos = Todolist.objects.filter(completed=True)
     context = {
@@ -68,12 +78,14 @@ def compindex(request):
     }
     return render(request, 'todos/completed.html', context)
 
+@login_required
 def completed(request, pk):
     todo = Todolist.objects.get(pk=pk)
     todo.completed = True
     todo.save()
     return redirect('todos:index')
 
+@login_required
 def compdetail(request, pk):
     todo = Todolist.objects.get(pk=pk)
     context = {
@@ -90,12 +102,13 @@ def cal_d_day(request, todo_id):
     }
     return render(request, 'todos/index.html', context)
 
+@login_required
 def reset(request):
     Todolist.objects.all().delete()
     return redirect('todos:index')
 
 def board(request):
-    todos = Todolist.objects.filter(completed=False)
+    todos = Todolist.objects.filter(completed=False, check_share=True)
     d_days = []
     for todo in todos:
         remaining_days = (todo.target_day - timezone.now().date()).days
@@ -118,6 +131,7 @@ def board_detail(request, pk):
     }
     return render(request, 'todos/boarddetail.html', context)
 
+@login_required
 def comments_create(request, pk):
     todo = Todolist.objects.get(pk=pk)
     comment_form = CommentForm(request.POST)
@@ -133,12 +147,14 @@ def comments_create(request, pk):
     }
     return render(request, 'todos/boarddetail.html', context)
 
+@login_required
 def comments_delete(request, todo_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     if request.user == comment.user:
         comment.delete()
     return redirect('todos:board_detail', todo_pk)
 
+@login_required
 def likes(request, pk):
     todo = Todolist.objects.get(pk=pk)
     if request.user in todo.like_users.all():

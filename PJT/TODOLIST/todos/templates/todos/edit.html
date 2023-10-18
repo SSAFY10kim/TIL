@@ -1,22 +1,11 @@
 {% extends "base.html" %}
+
 {% block content %}
-  <h1>해야할 일 생성</h1>
-  <form action="{% url "todos:update" todo.pk %}" method="POST">
+  <h1><i class="bi bi-pencil-square">  ToDoList 수정</i></h1>
+  <hr>
+  <form action="{% url "todos:edit" todo.pk %}" method="POST">
     {% csrf_token %}
-    <div>
-      <label for="title">해야할 일 : </label>
-      <input type="text" id="title" name="title" value="{{ todo.title }}">
-    </div>
-    <div>
-      <label for="description">설명 : </label>
-      <textarea name="description" id="description" cols="30" rows="10">{{ todo.description }}</textarea>
-    </div>
-    <div>
-      <label for="target_day">기간 : </label>
-      <input type="text" id="target_day" name="target_day" placeholder="YYYY-MM-DD" value={{ todo.target_day|date:'Y-m-d' }}>
-    </div>
-    <label for="important">Important<input type="checkbox" name="important" value="True" checked>여기 적은건 다 중요한 일아닐까?</label><br>
-    <input type="submit">
+    {{ form.as_p }}
+    <input type="submit", value="등록">
   </form>
-  <a href="{% url "todos:index" %}">[취소]</a>
 {% endblock content %}
