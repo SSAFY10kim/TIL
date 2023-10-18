@@ -6,30 +6,38 @@
     <h1>TO DO</h1>
   {% endif %}
   <p>{{ todo.pk }}번째 할 일</p>
+  {% if request.user == todo.user %}
   <form action="{% url 'todos:edit' todo.pk %}" method="get">
     <button type="submit" class="btn btn-outline-info">
       <i class="bi bi-pencil-square"></i>
       계획 수정
     </button>
   </form>
+  {% endif %}
   <hr>
   <ul>
+    <li>작성자 : {{ todo.user }}</li>
     <li>해야 할 일 : {{ todo.title }}</li>
     <li>설명 : {{todo.description }}</li>
   </ul>
-  <form action="{% url "todos:delete" todo.pk %}" method='POST'>
-    {% csrf_token %}
-    <button type="submit" class="btn btn-outline-danger">
-      <span class="bi bi-trash-fill">  하기 싫음</span>
-    </button>
-  </form>
-  <form action="{% url "todos:completed" todo.pk %}" method="POST">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-outline-success">
-      <span class="bi bi-check-square">  완료!!!</span>
-    </button>
-  </form>
   <hr>
+  {% if request.user == todo.user %}
+  <div class="detail-button-container">
+    <form action="{% url "todos:completed" todo.pk %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-success">
+        <span class="bi bi-check-square">  완료!!!</span>
+      </button>
+    </form>
+    <form action="{% url "todos:delete" todo.pk %}" method='POST'>
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-danger">
+        <span class="bi bi-trash-fill">  하기 싫음</span>
+      </button>
+    </form>
+  </div>
+  <hr>
+  {% endif %}
   <p>작성 시간 : {{ todo.created_at }}</p>
   <a href="{% url "todos:index" %}">[BACK]</a>
 {% endblock content %}

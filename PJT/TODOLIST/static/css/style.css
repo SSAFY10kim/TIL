@@ -19,3 +19,8 @@ hr {
 .bi.bi-trash {
   color: black;
 }
+
+.detail-button-container {
+  display: flex;
+  gap: 10px;
+}
