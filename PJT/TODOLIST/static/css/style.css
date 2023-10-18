@@ -20,7 +20,8 @@ hr {
   color: black;
 }
 
-.detail-button-container {
+.detail-button-container
+, .completed-button{
   display: flex;
   gap: 10px;
 }

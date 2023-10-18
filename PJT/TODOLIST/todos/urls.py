@@ -10,6 +10,7 @@ urlpatterns = [
     path('<int:pk>/edit/', views.edit, name='edit'),
     path('compindex/', views.compindex, name='compindex'),
     path('<int:pk>/completed/', views.completed, name='completed'),
+    path('<int:pk>/uncompleted/', views.uncompleted, name='uncompleted'),
     path('<int:pk>/compdetail/', views.compdetail, name='compdetail'),
     path('reset/', views.reset, name='reset'),
     path('board/', views.board, name='board'),

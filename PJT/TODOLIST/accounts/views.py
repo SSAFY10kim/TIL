@@ -4,6 +4,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import (
     require_http_methods,
     require_POST,
@@ -86,6 +87,7 @@ def profile(request, username):
     }
     return render(request, 'accounts/profile.html', context)
 
+@login_required
 def follow(request, user_pk):
     User = get_user_model()
     you = User.objects.get(pk=user_pk)

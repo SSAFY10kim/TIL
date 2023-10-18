@@ -21,11 +21,17 @@
     {% endif %}
   </form>
   <hr>
+  {% if user.is_authenticated %}
+  <h4>댓글 작성</h4>
   <form action="{% url "todos:comments_create" todo.pk %}" method="POST">
     {% csrf_token %}
     {{ comment_form }}
     <input type="submit" value="댓글 등록" class="btn btn-outline-secondary">
   </form>
+  {% else %}
+  <h4>댓글 작성</h4>
+  <p>로그인 후 작성해주세요.</p>
+  {% endif %}
   <hr>
   <h4>댓글 목록 : {{ comments | length }}개</h4>
   <ul>

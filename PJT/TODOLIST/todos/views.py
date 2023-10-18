@@ -86,6 +86,13 @@ def completed(request, pk):
     return redirect('todos:index')
 
 @login_required
+def uncompleted(request, pk):
+    todo = Todolist.objects.get(pk=pk)
+    todo.completed = False
+    todo.save()
+    return redirect('todos:index')
+
+@login_required
 def compdetail(request, pk):
     todo = Todolist.objects.get(pk=pk)
     context = {

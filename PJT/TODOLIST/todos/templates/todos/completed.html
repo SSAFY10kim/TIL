@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>이걸 내가 다했다...</h1>
+<hr>
 {% for todo in todos %}
   {% if request.user == todo.user %}
   <p>{{ forloop.counter }} 번째 완료 한 일</p>

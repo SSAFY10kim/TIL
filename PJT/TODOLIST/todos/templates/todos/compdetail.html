@@ -7,12 +7,21 @@
   <li>해야 한 일 : {{ todo.title }}</li>
   <li>설명 : {{todo.description }}</li>
 </ul>
-<form action="{% url "todos:delete" todo.pk %}" method='POST'>
-  {% csrf_token %}
-  <button type="submit" class="btn btn-outline-danger">
-    <span class="bi bi-trash">  보기 싫음</span>
-  </button>
-</form>
+<div class='detail-button-container'>
+  {% comment "" %}이거 왜 completed로 하면 안될까... 뭐지{% endcomment %}
+  <form action="{% url "todos:delete" todo.pk %}" method='POST'>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-danger">
+      <span class="bi bi-trash">  보기 싫음</span>
+    </button>
+  </form>
+  <form action="{% url "todos:uncompleted" todo.pk %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-success">
+      <span class="bi bi-reply-all-fill">  아직 다안함</span>
+    </button>
+  </form>
+</div>
 <hr>
 <p>작성 시간 : {{ todo.created_at }}</p>
 <a href="{% url "todos:index" %}">[BACK]</a>
