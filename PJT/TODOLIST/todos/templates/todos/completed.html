@@ -4,13 +4,12 @@
 <hr>
 {% for todo in todos %}
   {% if request.user == todo.user %}
-  <p>{{ forloop.counter }} 번째 완료 한 일</p>
+  <a href="{% url "todos:compdetail" todo.pk %}"><p>{{ forloop.counter }} 번째 완료 한 일</p></a>
   <ul>
     <li>완료 한 일 : {{ todo.title }}</li>
     <li>설명 : {{ todo.description }}</li>
   </ul>
   <p>작성 시간 : {{ todo.created_at }}</p>
-  <a href="{% url "todos:compdetail" todo.pk %}">[DETAIL]</a>
   <hr>
   {% endif %}
 {% endfor %}
