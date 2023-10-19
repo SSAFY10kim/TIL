@@ -8,16 +8,16 @@ hr {
   font-size: 30px;
 }
 
-.bi.bi-heart-fill {
+.bi .bi-heart-fill {
   color: red;
 }
 
-.bi.bi-heart {
+.bi .bi-heart {
   color: red;
 }
 
-.bi.bi-trash {
-  color: black;
+.bi .bi-trash {
+  color: red;
 }
 
 .detail-button-container

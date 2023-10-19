@@ -41,7 +41,8 @@ def detail(request, pk):
     todo = get_object_or_404(Todolist, pk=pk)
     if request.user != todo.user:
         return HttpResponseForbidden(
-            '<a href="http://127.0.0.1:8000/">[BACK]</a>'
+            ''' 접근 권한이 없습니다!<br>
+            <a href="http://127.0.0.1:8000/">[BACK]</a>'''
             )
     context = {
         'todo' : todo,
