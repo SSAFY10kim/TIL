@@ -8,7 +8,7 @@ from django.http import HttpResponseForbidden
 
 # Create your views here.
 def index(request):
-    todos = Todolist.objects.filter(completed=False)
+    todos = Todolist.objects.filter(completed=False, user=request.user)
     d_days = []
     for todo in todos:
         remaining_days = (todo.target_day - timezone.now().date()).days
