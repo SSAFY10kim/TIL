@@ -22,16 +22,20 @@
   </ul>
   <hr>
   {% if request.user == todo.user %}
-  {% comment %} <div class="completed-switch">
+  <div class="shared-switch">
+    {% if todo.check_share %}
     <div class="form-check form-switch">
-      <form action="{% url "todos:completed" todo.pk %}" method="POST">
-        {% csrf_token %}
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">공유하기</label>
-      </form>
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+      <label class="form-check-label" for="flexSwitchCheckChecked">공유하기</label>
     </div>
+    {% else %}
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">공유하기</label>
+    </div>
+    {% endif %}
   </div>
-  <hr> {% endcomment %}
+  <hr>
   <div class="detail-button-container">
     <form action="{% url "todos:completed" todo.pk %}" method="POST">
       {% csrf_token %}
