@@ -10,7 +10,8 @@
 <body>
   <div id="app">
     <!-- template syntax -->
-
+    <p>message : {{ msg }}</p>
+    <p v-html="rawHtml"></p>
     <!-- directive -->
   </div>
 
@@ -20,7 +21,7 @@
 
     const app = createApp({
       setup() {
-        const msg = 'Hello'
+        const msg = ref('Hello')
         const rawHtml = ref('<span style="color:red">This should be red.</span>')
         const dynamicId = ref('my-id')
         const number = ref(1)
