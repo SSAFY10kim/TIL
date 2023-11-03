@@ -4,6 +4,10 @@ hr {
   background-color: black;
 }
 
+.container {
+  display: flex;
+}
+
 .bi.bi-journal {
   font-size: 30px;
 }
@@ -30,4 +34,9 @@ input[type="checkbox"] {
   width: 15px; /* 너비를 조정하세요. */
   height: 15px; /* 높이를 조정하세요. */
   margin-left: 10px;
+}
+
+.mainimg {
+  display: flex;
+  
 }

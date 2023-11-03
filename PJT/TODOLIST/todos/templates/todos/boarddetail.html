@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
   <h2>{{ todo.user.username }}이/가 해야할 일</h2>
   <hr>
@@ -12,11 +13,11 @@
     {% csrf_token %}
     {% if request.user in todo.like_users.all %}
       <button type="submit" class="btn btn-link">
-        <span class="bi bi-heart-fill"></span>
+        <span class="bi-heart-fill"></span>
       </button>
     {% else %}
       <button type="submit" class="btn btn-link">
-        <span class="bi bi-heart"></span>
+        <span class="bi-heart"></span>
       </button>
     {% endif %}
   </form>

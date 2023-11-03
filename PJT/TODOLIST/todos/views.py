@@ -7,6 +7,10 @@ from .forms import TodolistForm, CommentForm
 from django.http import HttpResponseForbidden
 
 # Create your views here.
+def main(request):
+    return render(request, 'todos/main.html')
+
+@login_required
 def index(request):
     todos = Todolist.objects.filter(completed=False, user=request.user)
     d_days = []

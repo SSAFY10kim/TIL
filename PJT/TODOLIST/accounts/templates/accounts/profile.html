@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>{{ person.username }}님의 프로필</h1>
-<p>팔로잉 : {{person.followings.all | length }} / 팔로워 : {{ person.followers.all | length }}</p>
+<div>
+  팔로잉 : <span id="followings-count">{{person.followings.all | length }}</span> / 
+  팔로워 : <span id="followers-count">{{ person.followers.all | length }}</span>
+</div>
 {% if request.user.username == person.username %}
   <a href="{% url "accounts:change" %}" class="btn btn-outline-success"><i class="bi bi-pencil-square"> 회원정보 수정</i></a>
 {% else %}
   <div>
-    <form action="{% url "accounts:follow" person.pk %}" method="POST">
+    <form id='follow-form' data-user-id="{{ person.pk }}">
       {% csrf_token %}
-      {% if request.user in person.followers.all %}
-        <input type="submit" value="Unfollow" class="btn btn-warning">
-      {% else %}
-        <input type="submit" value="Follow" class="btn btn-primary">
-      {% endif %}
+      <input type="submit" :class="isfollow ? 'btn btn-outline-primary' : 'btn btn-outline-warning'" @click="toggleFollow">
     </form>
   </div>
 {% endif %}
@@ -44,3 +43,55 @@
 <hr>
 <a href="{% url "todos:board" %}">[BACK]</a>
 {% endblock content %}
+
+{% block script %}
+<script>
+  const {createApp, ref } = Vue
+  const app = createApp({
+    setup () {
+      const isfollow = ref(false)
+
+      const toggleFollow = () => {
+        isfollow.value = !isfollow.value; // 클릭할 때마다 토글
+      };
+
+      return {
+        isfollow,
+        toggleFollow,
+      }
+    }
+  })
+  app.mount('#follow-form')
+
+
+  const followTag = document.querySelector('#follow-form')
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  const followBtn = document.querySelector('#follow-form > input[type=submit]:nth-child(2)')
+  followTag.addEventListener('submit', function(event) {
+    event.preventDefault()
+
+    const userId = followTag.dataset.userId
+    axios({
+      method : 'post',
+      url : `/accounts/${userId}/follow/`,
+      headers: {'X-CSRFToken': csrftoken},
+    })
+      .then((response) => {
+        const isFollowed = response.data.is_followed
+        const followBtn = document.querySelector('#follow-form > input[type=submit]:nth-child(2)')
+
+        const followingsCountTag = document.querySelector('#followings-count')
+        const followersCountTag = document.querySelector('#followers-count')
+
+        if (isFollowed === true) {
+          followBtn.value = 'Unfollow'
+        } else {
+          followBtn.value = 'Follow'
+        }
+        console.log(isFollowed)
+        followingsCountTag.textContent = response.data.followings_count
+        followersCountTag.textContent = response.data.followers_count
+      })
+  })
+</script>
+{% endblock script %}
