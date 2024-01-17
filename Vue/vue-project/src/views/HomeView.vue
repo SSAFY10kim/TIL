@@ -24,7 +24,7 @@
 <script setup>
 import axios from 'axios';
 import { onMounted, ref, computed } from 'vue';
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink, RouterView } from 'vue-router'
 
 const info = ref([]);
 const imageLink = ref('https://image.tmdb.org/t/p/w500');
@@ -92,3 +92,4 @@ const goToPage = (page) => {
   margin-right: 10px; /* 원하는 간격 설정 */
 }
 </style>
+

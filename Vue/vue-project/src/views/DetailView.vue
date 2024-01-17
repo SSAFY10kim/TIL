@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Details</h1>
-    {{ id }}
+    {{ movieId }}
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import { ref } from 'vue';
 
 const route = useRoute();
 
-const id = route.params.id
+const movieId = route.params.id
 </script>
 
 <style scoped>
