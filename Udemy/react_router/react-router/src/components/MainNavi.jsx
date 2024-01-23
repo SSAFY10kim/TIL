@@ -11,7 +11,7 @@ export default function MainNavi() {
         <ul className={classes.list}>
           <li>
             <NavLink
-              to="/"
+              to=""
               className={({ isActive }) =>
                 isActive ? classes.active : undefined}
               end
@@ -21,7 +21,7 @@ export default function MainNavi() {
           </li>
           <li>
             <NavLink
-              to="/products" className={({ isActive }) =>
+              to="products" className={({ isActive }) =>
                 isActive ? classes.active : undefined}>
               Product
             </NavLink>
