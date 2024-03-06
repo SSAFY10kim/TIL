@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AnserButton extends StatelessWidget {
-  const AnserButton({
+class AnswerButton extends StatelessWidget {
+  const AnswerButton({
     super.key,
     required this.anserText,
     required this.onTap,
@@ -21,7 +21,10 @@ class AnserButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(40),
         ),
       ),
-      child: Text(anserText),
+      child: Text(
+        anserText,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
