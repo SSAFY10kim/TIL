@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:tracker_app/widgets/expenses.dart';
 
 void main() {
-  runApp(const TrackerApp());
+  runApp(
+    const MaterialApp(
+      home: TrackerApp(),
+    ),
+  );
 }
