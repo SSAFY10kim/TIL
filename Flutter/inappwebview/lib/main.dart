@@ -2,10 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-final InAppLocalhostServer localhostServer = InAppLocalhostServer(
-  documentRoot: 'assets',
-  port: 3000,
-);
+final InAppLocalhostServer localhostServer =
+    InAppLocalhostServer(documentRoot: 'assets');
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,22 +32,44 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('InAppLocalhostServer Exampleaaa'),
+        toolbarHeight: 50,
+        title: const Text(
+          '대충 로고자리',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications),
+          ),
+        ],
       ),
       body: Container(
-          child: Column(children: <Widget>[
-        Expanded(
-          child: InAppWebView(
-            initialSettings: InAppWebViewSettings(
-              isInspectable: kDebugMode,
-            ),
-            initialUrlRequest: URLRequest(url: WebUri("http://10.0.2.2:5173/")),
-            onWebViewCreated: (controller) {},
-            onLoadStart: (controller, url) {},
-            onLoadStop: (controller, url) {},
-          ),
-        )
-      ])),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: InAppWebView(
+                initialSettings: InAppWebViewSettings(
+                  isInspectable: kDebugMode,
+                ),
+                initialUrlRequest:
+                    URLRequest(url: WebUri("http://10.0.2.2:5173/")),
+                onWebViewCreated: (controller) {},
+                onLoadStart: (controller, url) {},
+                onLoadStop: (controller, url) {},
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
