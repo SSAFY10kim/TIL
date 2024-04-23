@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
                   isInspectable: kDebugMode,
                 ),
                 initialUrlRequest:
-                    URLRequest(url: WebUri("http://192.168.123.104:5173/")),
+                    URLRequest(url: WebUri("http://192.168.30.111:5173/")),
                 onWebViewCreated: (controller) {},
                 onLoadStart: (controller, url) {},
                 onLoadStop: (controller, url) {},
